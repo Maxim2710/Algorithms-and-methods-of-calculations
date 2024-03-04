@@ -23,6 +23,7 @@ func FletcherRivesMethod(A [][]float64, B []float64) []float64 {
 	// Точность решения
 	epsilon := 0.00001 //4
 
+	// Пока норма градиента больше эпсилон и не достигнуто максимальное количество итераций
 	for math.Abs(controller.DotProduct(gradient, gradient)) > epsilon && iteration < maxIterations {
 		// Вычисление значения функции на текущей итерации
 		f := controller.DotProduct(gradient, gradient)
