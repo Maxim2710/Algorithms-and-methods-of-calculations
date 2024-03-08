@@ -10,6 +10,10 @@ import (
 	task21 "Algorithms/laboratory_work2/task1"
 	task22 "Algorithms/laboratory_work2/task2"
 	task23 "Algorithms/laboratory_work2/task3"
+	task31 "Algorithms/laboratory_work3/task1"
+	task32 "Algorithms/laboratory_work3/task2"
+	task33 "Algorithms/laboratory_work3/task3"
+	task34 "Algorithms/laboratory_work3/task4"
 	"fmt"
 	"log"
 )
@@ -84,7 +88,7 @@ func main() {
 	if numLabarotary == 2 && numTask == 1 {
 
 		// Задаем матрицу A и вектор B, X
-		A := helpers.Matrix{{2, -1, 0}, {0, 5, 2}, {1, -1, 3}}
+		A := helpers.Matrix{{2, -1, 0}, {10, 5, 2}, {100, -1, 3}}
 		B := helpers.Vector{3, 7, 4}
 		X := helpers.Vector{0, 0, 0}
 
@@ -115,7 +119,7 @@ func main() {
 	if numLabarotary == 2 && numTask == 2 {
 
 		// Заданные матрица и вектор
-		A := helpers.Matrix{{2, -1, 0}, {0, 5, 2}, {1, -1, 3}}
+		A := helpers.Matrix{{2, -1, 0}, {15, 5, 2}, {1, -1, 3}}
 		B := helpers.Vector{3, 7, 4}
 
 		// Начальное приближение
@@ -147,8 +151,8 @@ func main() {
 		// Матрица A
 		A := [][]float64{
 			{2, -1, 0},
-			{0, 5, 2},
-			{1, -1, 3},
+			{1, 5, 2},
+			{3, -1, 3},
 		}
 
 		// Вектор B
@@ -170,5 +174,55 @@ func main() {
 
 		fmt.Println("Solving a system of equations:")
 		fmt.Println(X)
+	}
+
+	if numLabarotary == 3 && numTask == 1 {
+		// Начальные границы отрезка и требуемая точность
+		a := -40.0
+		b := 40.0
+		epsilon := 0.0001
+
+		// Ищем корень методом дихотомии
+		root := task31.DichotomyMethod(a, b, epsilon)
+
+		// Выводим результат
+		fmt.Printf("Approximate value of the root is: %f\n", root)
+	}
+
+	if numLabarotary == 3 && numTask == 2 {
+		// Начальное предположение и требуемая точность
+		guess := 0.5
+		epsilon := 0.0001
+
+		// Вызываем метод Ньютона для поиска корня
+		root, n := task32.NewtonMethod(guess, epsilon)
+
+		// Выводим результат
+		fmt.Printf("The root of the equation is: %v\n", root)
+		fmt.Printf("Number of iterations: %v\n", n)
+	}
+
+	if numLabarotary == 3 && numTask == 3 {
+		// Начальные предположения
+		x := 1.0
+		y := 1.0
+		tolerance := 0.00001
+
+		// Вызываем метод Ньютона-Рафсона для решения системы уравнений
+		solutionX, solutionY := task33.NewtonRaphson(x, y, tolerance)
+
+		// Выводим результат
+		fmt.Printf("Solving a system of equations:\nx = %v\ny = %v\n", solutionX, solutionY)
+	}
+
+	if numLabarotary == 3 && numTask == 4 {
+		// Инициализация границ интервала, на котором ищем минимум, и критерия останова
+		leftBoundary := -150.0
+		rightBoundary := 1000.5
+		epsilon := 0.0001
+
+		// Вычисление минимума функции
+		minimum := task34.InverseQuadraticInterpolation(leftBoundary, rightBoundary, epsilon)
+		fmt.Printf("Minimum of the function on the interval [%v, %v]: %v\n", leftBoundary, rightBoundary, minimum)
 	}
 }
