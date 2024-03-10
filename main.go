@@ -14,8 +14,15 @@ import (
 	task32 "Algorithms/laboratory_work3/task2"
 	task33 "Algorithms/laboratory_work3/task3"
 	task34 "Algorithms/laboratory_work3/task4"
+	controller4 "Algorithms/laboratory_work4/controller"
+	task41 "Algorithms/laboratory_work4/task1"
+	task42 "Algorithms/laboratory_work4/task2"
+	task43 "Algorithms/laboratory_work4/task3"
+	task44 "Algorithms/laboratory_work4/task4"
+	task45 "Algorithms/laboratory_work4/task5"
 	"fmt"
 	"log"
+	"math"
 )
 
 func main() {
@@ -26,7 +33,7 @@ func main() {
 
 	fmt.Print("Laboratory work number: ")
 	fmt.Print(numLabarotary)
-	fmt.Print("; Select the task1 number: ")
+	fmt.Print("; Select the task number: ")
 	fmt.Scan(&numTask)
 	fmt.Println("Laboratory work:", numLabarotary, "| Task:", numTask)
 	fmt.Println()
@@ -224,5 +231,125 @@ func main() {
 		// Вычисление минимума функции
 		minimum := task34.InverseQuadraticInterpolation(leftBoundary, rightBoundary, epsilon)
 		fmt.Printf("Minimum of the function on the interval [%v, %v]: %v\n", leftBoundary, rightBoundary, minimum)
+	}
+
+	if numLabarotary == 4 && numTask == 1 {
+		// Пример набора точек
+		points := [][]float64{{-9.5, 15.5}, {-4, 2}, {-1, -2}, {7, 9}}
+
+		// Вывод полинома Лагранжа
+		polynomial := task41.LagrangePolynomial(points)
+		fmt.Println("Lagrange polynomial:")
+		fmt.Println("L(x) =", polynomial)
+		fmt.Println("------------------------------------------------------------------------------------------------------------------------------------------------------------")
+
+		// Проверка интерполяции для некоторых значений x
+		xs := []float64{-5, -2, 0, 5}
+		fmt.Println("Answer is:")
+		for _, x := range xs {
+			fmt.Printf("L(%.1f) = %.4f\n", x, task41.LagrangeInterpolation(x, points))
+		}
+	}
+
+	if numLabarotary == 4 && numTask == 2 {
+		// Задаем функцию
+		functions := []struct {
+			name string
+			f    func(float64) float64
+		}{
+			{"e^x", math.Exp},
+			{"e^-x", func(x float64) float64 { return math.Exp(-x) }},
+			{"sh(x)", func(x float64) float64 { return math.Sinh(x) }},
+			{"ch(x)", func(x float64) float64 { return math.Cosh(x) }},
+			{"sin(x)", math.Sin},
+			{"cos(x)", math.Cos},
+			{"ln(x)", math.Log},
+		}
+
+		// Задаем интервал и шаг
+		start := 1.0
+		end := 1.2
+		h := 0.04 // Оставляем шаг 0.04
+
+		// Создаем сетку значений x и y для каждой функции с более плотной сеткой
+		for _, fn := range functions {
+			fmt.Println("Function:", fn.name)
+			var x, y []float64
+			// Увеличиваем количество точек в 5 раз
+			for xi := start; xi <= end; xi += h / 40 {
+				x = append(x, xi)
+				y = append(y, fn.f(xi))
+			}
+
+			// Строим кубический сплайн
+			spline := task42.NewCubicSpline(x, y)
+
+			// Находим значения сплайна в указанных точках
+			points := []float64{1.05, 1.09, 1.13, 1.15, 1.17}
+			for _, point := range points {
+				fmt.Printf("  Spline at x = %.2f: %.6f\n", point, spline.Eval(point))
+			}
+			fmt.Println("----------------------------------")
+		}
+	}
+
+	if numLabarotary == 4 && numTask == 3 {
+		// Заданный отрезок и шаг
+		h := 0.04
+
+		// Вычислить значение сплайна в указанных точках
+		points := []float64{1.05, 1.09, 1.13, 1.15, 1.17}
+
+		// Интерполируемые функции: e^x, e^-x, sh(x), ch(x), sin(x), cos(x), ln(x)
+		functions := map[string]func(float64) float64{
+			"e^x":    controller4.FExp,
+			"e^-x":   controller4.FExpNeg,
+			"sh(x)":  controller4.FSinh,
+			"ch(x)":  controller4.FCosh,
+			"sin(x)": controller4.FSin,
+			"cos(x)": controller4.FCos,
+			"ln(x)":  controller4.FLn,
+		}
+
+		for name, function := range functions {
+			// Для каждой функции в наборе функций
+			fmt.Println("Функция:", name)
+			for _, point := range points {
+				// Для каждой точки, в которой нужно вычислить сплайн
+				x0 := math.Floor(point/h) * h                                   // Находим ближайшую точку слева от заданной
+				x1 := x0 + h                                                    // Находим ближайшую точку справа от заданной
+				f0 := function(x0)                                              // Значение функции в точке слева
+				f1 := function(x1)                                              // Значение функции в точке справа
+				df0 := (function(x0+h) - function(x0-h)) / (2 * h)              // Центральная разностная схема для производной в точке слева
+				df1 := (function(x1+h) - function(x1-h)) / (2 * h)              // Центральная разностная схема для производной в точке справа
+				result := task43.HermiteSpline(point, x0, x1, f0, f1, df0, df1) // Вычисление сплайна Эрмита для заданной точки
+				fmt.Printf("  Сплайн в точке %v: %v\n", point, result)
+			}
+			fmt.Println("--------------------------------------")
+		}
+	}
+
+	if numLabarotary == 4 && numTask == 4 {
+		// Опорные точки кривой Безье
+		P := []controller4.Point{
+			{0, 0},
+			{1, 3},
+			{2, -1},
+			{3, 2},
+		}
+
+		// Вычисление точек на кривой Безье с шагом 0.1
+		for t := 0.0; t <= 1.0; t += 0.1 {
+			point := task44.BezierCurve(P, t)
+			fmt.Printf("t = %.1f, Point: (%.2f, %.2f)\n", t, point.X, point.Y)
+		}
+	}
+
+	if numLabarotary == 4 && numTask == 5 {
+		x := 2.0    // Точка, в которой нужно вычислить производную
+		h := 0.0001 // Шаг для численного дифференцирования
+
+		derivative := task45.Differentiate(controller4.FunctionDif, x, h)
+		fmt.Printf("The value of the derivative at the point x = %v: %v\n", x, derivative)
 	}
 }
