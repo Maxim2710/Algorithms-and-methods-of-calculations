@@ -10,6 +10,7 @@ import (
 	task21 "Algorithms/laboratory_work2/task1"
 	task22 "Algorithms/laboratory_work2/task2"
 	task23 "Algorithms/laboratory_work2/task3"
+	"Algorithms/laboratory_work3/controller"
 	task31 "Algorithms/laboratory_work3/task1"
 	task32 "Algorithms/laboratory_work3/task2"
 	task33 "Algorithms/laboratory_work3/task3"
@@ -172,29 +173,45 @@ func IODistribution(numLabarotary, numTask int) {
 	}
 
 	if numLabarotary == 3 && numTask == 1 {
-		// Начальные границы отрезка и требуемая точность
-		a := -40.0
-		b := 40.0
+		// Задаем начальные значения интервала [a, b]
+		a := -15.0
+		b := 19.0
+
+		// Задаем размер шага и критерий сходимости (малое значение)
+		step := 0.01
 		epsilon := 0.0001
 
-		// Ищем корень методом дихотомии
-		root := task31.DichotomyMethod(a, b, epsilon)
+		// Находим все корни уравнения f(x) = 0 в заданном интервале
+		roots := task31.FindAllRoots(a, b, step, epsilon)
 
 		// Выводим результат
-		fmt.Printf("Approximate value of the root is: %f\n", root)
+		if len(roots) == 0 {
+			fmt.Println("В заданном интервале корни не найдены")
+		} else {
+			fmt.Println("Корни уравнения f(x):")
+			for _, root := range roots {
+
+				if root-1/math.Tan(root) <= 0.5 && root-1/math.Tan(root) >= -0.5 {
+					fmt.Printf("%f\n", root)
+				}
+
+			}
+		}
 	}
 
 	if numLabarotary == 3 && numTask == 2 {
-		// Начальное предположение и требуемая точность
-		guess := 0.5
-		epsilon := 0.0001
+		// Интервал, на котором нужно найти корни
+		a := -30.0
+		b := 40.0
 
-		// Вызываем метод Ньютона для поиска корня
-		root, n := task32.NewtonMethod(guess, epsilon)
+		// Найти корни уравнения на заданном интервале
+		roots := task32.FindRootsOnInterval(a, b)
 
-		// Выводим результат
-		fmt.Printf("The root of the equation is: %v\n", root)
-		fmt.Printf("Number of iterations: %v\n", n)
+		// Вывести найденные корни
+		fmt.Println("Found unique roots of equations:")
+		for _, root := range roots {
+			fmt.Printf("Root: %f, Function value at root: %f\n", root, controller.Function(root))
+		}
 	}
 
 	if numLabarotary == 3 && numTask == 3 {
@@ -212,8 +229,8 @@ func IODistribution(numLabarotary, numTask int) {
 
 	if numLabarotary == 3 && numTask == 4 {
 		// Инициализация границ интервала, на котором ищем минимум, и критерия останова
-		leftBoundary := -150.0
-		rightBoundary := 1000.5
+		leftBoundary := 10.1
+		rightBoundary := 12.0
 		epsilon := 0.0001
 
 		// Вычисление минимума функции
@@ -301,7 +318,7 @@ func IODistribution(numLabarotary, numTask int) {
 
 		for name, function := range functions {
 			// Для каждой функции в наборе функций
-			fmt.Println("Функция:", name)
+			fmt.Println("Function is:", name)
 			for _, point := range points {
 				// Для каждой точки, в которой нужно вычислить сплайн
 				x0 := math.Floor(point/h) * h                                   // Находим ближайшую точку слева от заданной
@@ -339,5 +356,9 @@ func IODistribution(numLabarotary, numTask int) {
 
 		derivative := task45.Differentiate(controller4.FunctionDif, x, h)
 		fmt.Printf("The value of the derivative at the point x = %v: %v\n", x, derivative)
+	}
+
+	if numLabarotary == 5 && numTask == 1 {
+
 	}
 }

@@ -4,11 +4,11 @@ import "math"
 
 // Функция, для которой мы ищем корень (в данном случае x - ctg(x))
 func Function(x float64) float64 {
-	return x - (1 / math.Tan(x))
+	return (x - (1 / math.Tan(x)))
 }
 
-// Производная функции f
-func DerivativeFunction(x float64) float64 {
+// Производная функции
+func Df(x float64) float64 {
 	return 1 + (1 / (math.Sin(x) * math.Sin(x)))
 }
 

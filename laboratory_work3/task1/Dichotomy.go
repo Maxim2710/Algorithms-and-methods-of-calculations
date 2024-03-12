@@ -2,33 +2,41 @@ package task1
 
 import (
 	"Algorithms/laboratory_work3/controller"
-	"fmt"
 	"math"
 )
 
-// Метод дихотомии
-func DichotomyMethod(a, b, epsilon float64) float64 {
-	// Проверка, что функция меняет знак на отрезке [a, b]
-	if controller.Function(a)*controller.Function(b) > 0 {
-		fmt.Println("Error: the function does not change the sign on this segment")
-		return math.NaN() // Если функция не меняет знак, возвращаем NaN (Not-a-Number)
-	}
-
-	// Количество итераций
-	n := int(math.Log((b-a)/epsilon) / math.Log(2)) // Определяем количество итераций по формуле
-
-	for i := 0; i < n; i++ {
+// Метод дихотомии для поиска корней уравнения f(x) = 0
+func BisectionMethod(a, b, epsilon float64) float64 {
+	// Пока разница между b и a больше или равна эпсилону
+	for math.Abs(b-a) >= epsilon {
 		// Находим середину отрезка
-		c := (a + b) / 2 // Середина отрезка
-
-		// Проверяем, меняет ли функция знак на отрезке [a, c]
+		c := (a + b) / 2
+		// Если функция на концах отрезка имеет разные знаки,
+		// то корень находится между ними
 		if controller.Function(a)*controller.Function(c) < 0 {
-			b = c // Если меняет, сдвигаем правую границу отрезка
+			b = c // Сдвигаем правую границу к середине
 		} else {
-			a = c // Иначе сдвигаем левую границу отрезка
+			a = c // Сдвигаем левую границу к середине
 		}
 	}
+	// Возвращаем середину последнего интервала как приближенное значение корня
+	return (a + b) / 2
+}
 
-	// Возвращаем середину отрезка как приближенное значение корня
-	return (a + b) / 2 // Возвращаем середину отрезка
+// Функция для нахождения всех корней уравнения f(x) = 0 на заданном интервале [a, b]
+func FindAllRoots(a, b, step, epsilon float64) []float64 {
+	var roots []float64 // Инициализируем массив для хранения корней
+	// Проходимся по интервалу от a до b с шагом step
+	for x := a; x <= b; x += step {
+		// Если функция на текущем отрезке имеет разные знаки на его концах,
+		// то на этом отрезке существует корень
+		if controller.Function(x)*controller.Function(x+step) < 0 {
+			// Находим корень на текущем отрезке методом дихотомии
+			root := BisectionMethod(x, x+step, epsilon)
+			// Добавляем найденный корень в массив
+			roots = append(roots, root)
+		}
+	}
+	// Возвращаем массив корней
+	return roots
 }
