@@ -21,6 +21,9 @@ import (
 	task43 "Algorithms/laboratory_work4/task3"
 	task44 "Algorithms/laboratory_work4/task4"
 	task45 "Algorithms/laboratory_work4/task5"
+	controller5 "Algorithms/laboratory_work5/controller"
+	task51 "Algorithms/laboratory_work5/task1"
+	task52 "Algorithms/laboratory_work5/task2"
 	"fmt"
 	"log"
 	"math"
@@ -30,9 +33,9 @@ func IODistribution(numLabarotary, numTask int) {
 	if numLabarotary == 1 && numTask == 1 {
 
 		a := 0.0
-		b := 3.0
+		b := 1.6
 		var n int
-		epsilon := 1e-3
+		epsilon := 1e-4
 
 		fmt.Print("Please, enter the number of split intervals: ")
 		fmt.Scan(&n)
@@ -125,7 +128,7 @@ func IODistribution(numLabarotary, numTask int) {
 		epsilon := 0.00001
 
 		// Максимальное количество итераций
-		maxIterations := 1000
+		maxIterations := 30
 
 		// Итерационный метод Зейделя
 		X = task22.SeidelMethod(A, B, epsilon, maxIterations)
@@ -174,8 +177,8 @@ func IODistribution(numLabarotary, numTask int) {
 
 	if numLabarotary == 3 && numTask == 1 {
 		// Задаем начальные значения интервала [a, b]
-		a := -15.0
-		b := 19.0
+		a := 0.0
+		b := 12.0
 
 		// Задаем размер шага и критерий сходимости (малое значение)
 		step := 0.01
@@ -240,16 +243,16 @@ func IODistribution(numLabarotary, numTask int) {
 
 	if numLabarotary == 4 && numTask == 1 {
 		// Пример набора точек
-		points := [][]float64{{-9.5, 15.5}, {-4, 2}, {-1, -2}, {7, 9}}
+		points := [][]float64{{1.0, 5.1}, {2.0, 4.4}, {3.0, 3.2}, {4.0, 2.7}, {5, 2.55}}
 
 		// Вывод полинома Лагранжа
 		polynomial := task41.LagrangePolynomial(points)
 		fmt.Println("Lagrange polynomial:")
 		fmt.Println("L(x) =", polynomial)
-		fmt.Println("------------------------------------------------------------------------------------------------------------------------------------------------------------")
+		fmt.Println("---------------------------------------------------------------------------------------------------------------------------------------------------------")
 
 		// Проверка интерполяции для некоторых значений x
-		xs := []float64{-5, -2, 0, 5}
+		xs := []float64{2}
 		fmt.Println("Answer is:")
 		for _, x := range xs {
 			fmt.Printf("L(%.1f) = %.4f\n", x, task41.LagrangeInterpolation(x, points))
@@ -290,7 +293,7 @@ func IODistribution(numLabarotary, numTask int) {
 			spline := task42.NewCubicSpline(x, y)
 
 			// Находим значения сплайна в указанных точках
-			points := []float64{1.05, 1.09, 1.13, 1.15, 1.17}
+			points := []float64{1.18}
 			for _, point := range points {
 				fmt.Printf("  Spline at x = %.2f: %.6f\n", point, spline.Eval(point))
 			}
@@ -303,7 +306,7 @@ func IODistribution(numLabarotary, numTask int) {
 		h := 0.04
 
 		// Вычислить значение сплайна в указанных точках
-		points := []float64{1.05, 1.09, 1.13, 1.15, 1.17}
+		points := []float64{1.10}
 
 		// Интерполируемые функции: e^x, e^-x, sh(x), ch(x), sin(x), cos(x), ln(x)
 		functions := map[string]func(float64) float64{
@@ -328,7 +331,7 @@ func IODistribution(numLabarotary, numTask int) {
 				df0 := (function(x0+h) - function(x0-h)) / (2 * h)              // Центральная разностная схема для производной в точке слева
 				df1 := (function(x1+h) - function(x1-h)) / (2 * h)              // Центральная разностная схема для производной в точке справа
 				result := task43.HermiteSpline(point, x0, x1, f0, f1, df0, df1) // Вычисление сплайна Эрмита для заданной точки
-				fmt.Printf("  Сплайн в точке %v: %v\n", point, result)
+				fmt.Printf("  The spline at the point %v: %v\n", point, result)
 			}
 			fmt.Println("--------------------------------------")
 		}
@@ -359,6 +362,20 @@ func IODistribution(numLabarotary, numTask int) {
 	}
 
 	if numLabarotary == 5 && numTask == 1 {
+		fmt.Println("The result of the interpolation is", task51.FourierSeries(controller5.G, 2*math.Pi, 10,
+			[]float64{-math.Pi / 2, 0, math.Pi / 2, math.Pi}))
+		fmt.Println("The result of the original function is", []float64{controller5.G(-math.Pi / 2),
+			controller5.G(0), controller5.G(math.Pi / 2), controller5.G(math.Pi)})
+		fmt.Println("An absolute mistake is",
+			controller5.MistakeCounter([]float64{controller5.G(-math.Pi / 2),
+				controller5.G(0), controller5.G(math.Pi / 2), controller5.G(math.Pi)},
+				task51.FourierSeries(controller5.G, 2*math.Pi, 10,
+					[]float64{-math.Pi / 2, 0, math.Pi / 2, math.Pi})))
+	}
 
+	if numLabarotary == 5 && numTask == 2 {
+		fmt.Println("Fast Fourier transform is")
+		fmt.Println("Background information is", []complex128{0, 1, 2, 3, 4, 5, 6, 7})
+		fmt.Println("Result is", task52.FastFourier([]complex128{0, 1, 2, 3, 4, 5, 6, 7}))
 	}
 }
