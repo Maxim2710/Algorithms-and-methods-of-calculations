@@ -21,9 +21,6 @@ import (
 	task43 "Algorithms/laboratory_work4/task3"
 	task44 "Algorithms/laboratory_work4/task4"
 	task45 "Algorithms/laboratory_work4/task5"
-	controller5 "Algorithms/laboratory_work5/controller"
-	task51 "Algorithms/laboratory_work5/task1"
-	task52 "Algorithms/laboratory_work5/task2"
 	"fmt"
 	"log"
 	"math"
@@ -359,23 +356,5 @@ func IODistribution(numLabarotary, numTask int) {
 
 		derivative := task45.Differentiate(controller4.FunctionDif, x, h)
 		fmt.Printf("The value of the derivative at the point x = %v: %v\n", x, derivative)
-	}
-
-	if numLabarotary == 5 && numTask == 1 {
-		fmt.Println("The result of the interpolation is", task51.FourierSeries(controller5.G, 2*math.Pi, 10,
-			[]float64{-math.Pi / 2, 0, math.Pi / 2, math.Pi}))
-		fmt.Println("The result of the original function is", []float64{controller5.G(-math.Pi / 2),
-			controller5.G(0), controller5.G(math.Pi / 2), controller5.G(math.Pi)})
-		fmt.Println("An absolute mistake is",
-			controller5.MistakeCounter([]float64{controller5.G(-math.Pi / 2),
-				controller5.G(0), controller5.G(math.Pi / 2), controller5.G(math.Pi)},
-				task51.FourierSeries(controller5.G, 2*math.Pi, 10,
-					[]float64{-math.Pi / 2, 0, math.Pi / 2, math.Pi})))
-	}
-
-	if numLabarotary == 5 && numTask == 2 {
-		fmt.Println("Fast Fourier transform is")
-		fmt.Println("Background information is", []complex128{0, 1, 2, 3, 4, 5, 6, 7})
-		fmt.Println("Result is", task52.FastFourier([]complex128{0, 1, 2, 3, 4, 5, 6, 7}))
 	}
 }

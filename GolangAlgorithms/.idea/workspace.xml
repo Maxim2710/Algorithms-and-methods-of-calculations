@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="ALL" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="4f56a9e0-0c04-473b-8b9c-d90f66d959e5" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../controller/distribution_controller.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../controller/io_controller.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../go.mod" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../go.sum" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../laboratory_work1/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../laboratory_work1/.idea/Laba 1.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../laboratory_work1/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../laboratory_work1/controller/adaptiveSimpsonRunge_controller.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../laboratory_work1/controller/averageValue_controller.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../laboratory_work1/controller/func_controller.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../laboratory_work1/preview/simferopol_reservoir.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../laboratory_work1/task1/Simpson.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../laboratory_work1/task2/MonteKarlo.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../laboratory_work1/task3/AdaptiveSimpson.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../laboratory_work2/controller/accuracy_controller.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../laboratory_work2/controller/func_controller.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../laboratory_work2/controller/matrix_controller.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../laboratory_work2/controller/rives_controller.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../laboratory_work2/helpers/types.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../laboratory_work2/task1/GaussJordan.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../laboratory_work2/task2/SeidelMethod.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../laboratory_work2/task3/FletcherReeves.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../laboratory_work3/controller/func_controller.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../laboratory_work3/task1/Dichotomy.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../laboratory_work3/task2/Newton.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../laboratory_work3/task3/NewtonRaphson.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../laboratory_work3/task4/InverseQuadraticInterpolation.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../laboratory_work4/controller/beizer_controller.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../laboratory_work4/controller/func_controller.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../laboratory_work4/task1/LagrangeInterpolation.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../laboratory_work4/task2/CubicSpline.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../laboratory_work4/task3/HermiteSpline.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../laboratory_work4/task4/BezierCurve.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../laboratory_work4/task5/Differentiate.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../laboratory_work5/controller/FourierMistake_controller.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../laboratory_work5/controller/func_controller.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../laboratory_work5/task1/FourierSeries.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../laboratory_work5/task2/FastFourier.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../main.go" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="GOROOT" url="file:///usr/local/go" />
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 2
+}]]></component>
+  <component name="ProjectId" id="2ee0pdCXLMikTT0I9wU17Rkew5w" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Go Build.go build Algorithms.executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.go.formatter.settings.were.checked": "true",
+    "RunOnceActivity.go.migrated.go.modules.settings": "true",
+    "RunOnceActivity.go.modules.automatic.dependencies.download": "true",
+    "RunOnceActivity.go.modules.go.list.on.any.changes.was.set": "true",
+    "git-widget-placeholder": "main",
+    "go.import.settings.migrated": "true",
+    "go.sdk.automatically.set": "true",
+    "last_opened_file_path": "/Users/admin/Algorithms-and-methods-of-calculations/GolangAlgorithms",
+    "node.js.detected.package.eslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RunManager">
+    <configuration name="go build Algorithms" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
+      <module name="GolangAlgorithms" />
+      <working_directory value="$PROJECT_DIR$" />
+      <kind value="PACKAGE" />
+      <package value="Algorithms" />
+      <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$/main.go" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Go Build.go build Algorithms" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-gosdk-2946fb9b3188-155fe4b6e3a0-org.jetbrains.plugins.go.sharedIndexes.bundled-GO-233.15026.17" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="VgoProject">
+    <settings-migrated>true</settings-migrated>
+  </component>
+</project>
